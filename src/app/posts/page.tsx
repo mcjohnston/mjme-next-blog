@@ -1,15 +1,8 @@
-// import Container from "@/app/_components/container";
-// import { HeroPost } from "@/app/_components/hero-post";
-// import { Intro } from "@/app/_components/intro";
-// import { MoreStories } from "@/app/_components/more-stories";
-// import { getAllPosts } from "@/lib/api";
+import PostList from "@/components/posts/post-list";
+import { getAllPosts } from "@/utils/api/posts-api";
 
-export default function Index() {
-  //   const allPosts = getAllPosts();
+export default function BlogIndexPage() {
+  const allPosts = getAllPosts();
 
-  //   const heroPost = allPosts[0];
-
-  //   const morePosts = allPosts.slice(1);
-
-  return <main>This is the blog listing page.</main>;
+  return <main>{allPosts.length > 0 && <PostList posts={allPosts} />}</main>;
 }
