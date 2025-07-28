@@ -1,28 +1,50 @@
-import fs from "fs";
-import grayMatter from "gray-matter";
+import { promises as fs } from "fs";
 import { join } from "path";
-import { type Post } from "@/types/post";
+import { compileMDX } from "next-mdx-remote/rsc";
+import { MDXPost, type Post } from "@/types/post";
+import PostHeader from "@/components/posts/post-header";
+import DebugMdx from "@/components/shared/DebugMdx";
 
 const postsDirectory = join(process.cwd(), "src", "source-md", "blog");
 
-export function getPostSlugs() {
-  return fs.readdirSync(postsDirectory);
+export async function getPostSlugs() {
+  let files: string[] = [];
+  try {
+    files = await fs.readdir(postsDirectory);
+  } catch (err) {
+    console.error(err);
+  }
+
+  return files;
 }
 
-export function getPostBySlug(slug: string) {
-  const realSlug = slug.replace(/\.md$/, "");
-  const fullPath = join(postsDirectory, `${realSlug}.md`);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = grayMatter(fileContents);
+export async function getPostBySlug(slug: string): Promise<MDXPost> {
+  const formattedSlug = slug.includes(".mdx") ? slug : `${slug}.mdx`;
+  const postContent = await fs.readFile(join(postsDirectory, formattedSlug), {
+    encoding: "utf-8",
+  });
 
-  return { ...data, slug: realSlug, content } as Post;
+  const compiledPostContent = await compileMDX<Post>({
+    source: postContent,
+    options: { parseFrontmatter: true },
+    components: {
+      PostHeader,
+      DebugMdx,
+    },
+  });
+
+  // trim off file extension for slug and send compiled content
+  return { ...compiledPostContent, slug: slug.replace(".mdx", "") }; // resulting object here should be { content, frontmatter, slug }
 }
 
-export function getAllPosts(): Post[] {
-  const slugs = getPostSlugs();
-  const posts = slugs
-    .map((slug) => getPostBySlug(slug))
-    // sort posts by date in descending order
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
-  return posts;
+export async function getAllPosts(): Promise<MDXPost[]> {
+  const slugs = await getPostSlugs();
+  const posts: MDXPost[] = [];
+
+  for (const slug of slugs) {
+    const postContent = await getPostBySlug(slug);
+    posts.push(postContent);
+  }
+
+  return posts.length > 0 ? posts : [];
 }

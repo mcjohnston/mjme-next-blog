@@ -1,36 +1,43 @@
-// import { Metadata } from "next";
-// import { notFound } from "next/navigation";
-// import { getAllPosts, getPostBySlug } from "@/lib/api";
-// import { CMS_NAME } from "@/lib/constants";
-// import markdownToHtml from "@/lib/markdownToHtml";
-// import Alert from "@/app/_components/alert";
-// import Container from "@/app/_components/container";
-// import Header from "@/app/_components/header";
-// import { PostBody } from "@/app/_components/post-body";
-// import { PostHeader } from "@/app/_components/post-header";
+import { type Metadata } from "next";
+import { notFound } from "next/navigation";
+import { getAllPosts, getPostBySlug } from "@/utils/api/posts-api";
+import PostHeader from "@/components/posts/post-header";
 
-export default async function PostSlugPage() {
-  //   const params = await props.params;
-  //   const post = getPostBySlug(params.slug);
+import { promises as fs } from "fs";
+import path from "path";
+import { compileMDX } from "next-mdx-remote/rsc";
+import DebugMdx from "@/components/shared/DebugMdx";
+import { Post } from "@/types/post";
 
-  //   if (!post) {
-  //     return notFound();
-  //   }
+type PostBySlugParams = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
 
-  //   const content = await markdownToHtml(post.content || "");
+export default async function PostSlugPage(props: PostBySlugParams) {
+  const awaitedParams = await props.params;
+  const postContent = await getPostBySlug(`${awaitedParams.slug}.mdx`);
+  const { title, coverImage, date } = postContent.frontmatter;
 
-  return <main>This is the singular blog post page</main>;
+  // early return to 404 if we don't get a post, TODO: Custom 404 for blog
+  if (!postContent) {
+    return notFound();
+  }
+
+  return (
+    <main>
+      <article className="mb-32">
+        <PostHeader {...{ title, coverImage, date }} />
+        {postContent.content}
+      </article>
+    </main>
+  );
 }
 
-// TODO: Review this with remark mdx and export to utils
-
-// type Params = {
-//   params: Promise<{
-//     slug: string;
-//   }>;
-// };
-
-// export async function generateMetadata(props: Params): Promise<Metadata> {
+// export async function generateMetadata(
+//   props: PostBySlugParams
+// ): Promise<Metadata> {
 //   const params = await props.params;
 //   const post = getPostBySlug(params.slug);
 
@@ -38,13 +45,13 @@ export default async function PostSlugPage() {
 //     return notFound();
 //   }
 
-//   const title = `${post.title} | Next.js Blog Example with ${CMS_NAME}`;
+//   const title = `${post.title} - By: Matthew Johnston`;
 
 //   return {
 //     title,
 //     openGraph: {
 //       title,
-//       images: [post.ogImage.url],
+//       images: post.ogImage?.url ? [post.ogImage.url] : [],
 //     },
 //   };
 // }

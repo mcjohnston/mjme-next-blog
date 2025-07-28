@@ -1,8 +1,8 @@
-import { type Post } from "@/types/post";
+import { type MDXPost } from "@/types/post";
 import PostPreview from "./post-preview";
 
 type PostListProps = {
-  posts: Post[];
+  posts: MDXPost[];
 };
 
 const PostList: React.FC<PostListProps> = ({ posts }) => {
@@ -12,16 +12,19 @@ const PostList: React.FC<PostListProps> = ({ posts }) => {
         More Stories
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32">
-        {posts.map((post) => (
-          <PostPreview
-            key={post.slug}
-            title={post.title}
-            coverImage={post.coverImage}
-            date={post.date}
-            slug={post.slug}
-            excerpt={post.excerpt}
-          />
-        ))}
+        {posts.map((post) => {
+          const { title, coverImage, date, excerpt } = post.frontmatter;
+          return (
+            <PostPreview
+              key={`post-preview-key--${post.slug}`}
+              title={title}
+              coverImage={coverImage}
+              date={date}
+              slug={post.slug}
+              excerpt={excerpt}
+            />
+          );
+        })}
       </div>
     </section>
   );

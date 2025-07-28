@@ -1,3 +1,5 @@
+import { ReactElement } from "react";
+
 export type Post = {
   slug: string; // url slug
   title: string; // post title
@@ -8,5 +10,13 @@ export type Post = {
     url: string;
   };
   content: string;
+  tags?: string[];
+  categories?: string[];
   preview?: boolean;
+};
+
+export type MDXPost = {
+  content: ReactElement;
+  frontmatter: Post;
+  slug: string;
 };
