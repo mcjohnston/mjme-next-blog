@@ -19,7 +19,7 @@ export const socialLinks: SocialLink[] = [
   {
     title: "LinkedIn",
     icon: (
-      <LinkedInIcon classOverrides="w-8 h-8 ml-2 hover:fill-sand transition-colors duration-100 ease-in-out" />
+      <LinkedInIcon classOverrides="w-8 h-8 first:ml-0 ml-2 hover:fill-sand transition-colors duration-100 ease-in-out" />
     ),
     url: "https://www.linkedin.com/in/matthew-johnston-8776423a/",
     activeAreas: ["footer"],

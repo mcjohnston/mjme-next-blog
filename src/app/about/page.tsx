@@ -1,3 +1,9 @@
+import BasePageWrap from "@/components/shared/BasePageWrap";
+
 export default function AboutPage() {
-  return <div>This is the AboutPage</div>;
+  return (
+    <main>
+      <BasePageWrap>This is the AboutPage</BasePageWrap>
+    </main>
+  );
 }

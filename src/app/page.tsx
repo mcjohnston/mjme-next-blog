@@ -1,21 +1,38 @@
 import Image from "next/image";
 import Container from "@/components/shared/Container";
+import DividerText from "@/components/shared/DividerText";
 
 export default function Home() {
   return (
     <main className="">
       <Container>
-        <div className="flex-row my-24 md:my-48 items-center content-center">
-          <div className="flex-col basis-full md:basis-1/2 order-1 md:order-0">
-            <h1 className="text-lightnavy font-sans text-6xl font-bold">
-              Hi there, <br /> Name&apos;s Matt
-            </h1>
-            <p className="font-serif text-[1.5rem] break-normal mt-6 antialiased">
-              I&apos;m a Full-Stack Developer currently living and working in
-              <span className="font-bold"> Indianapolis, Indiana</span>
-            </p>
+        <div className="grid grid-cols-12 md:my-24">
+          <div className="col-span-12 md:col-span-6 lg:col-span-8 bg-lightblue shadow-2xs md:shadow-none mb-10 md:mb-0 rounded-2xl md:rounded-none md:bg-transparent order-1 md:order-0">
+            <div className="px-8 md:px-0 my-8">
+              <h1 className="text-lightnavy font-sans text-4xl md:text-6xl font-bold">
+                Hi there, name&apos;s Matt
+              </h1>
+              <p className="font-serif text-[1.5rem] break-normal mt-6">
+                I&apos;m a Full-Stack, leaning towards the Front End, Developer
+                from
+                <span className="font-bold"> Indianapolis, Indiana</span>
+              </p>
+              <p className="font-serif text-[1.5rem] break-normal mt-4">
+                <span className="italic">Currently looking for work</span>
+                <span className="text-2xl">👷</span>
+              </p>
+              <div className="mt-6">
+                <button className="inline-flex" type="button">
+                  View My Resume
+                </button>
+                <DividerText>or</DividerText>
+                <button className="inline-flex" type="button">
+                  Previous Projects
+                </button>
+              </div>
+            </div>
           </div>
-          <div className="flex-col basis-full md:basis-1/2 order-0 md:order-1">
+          <div className="col-span-12 md:col-span-6 lg:col-span-4">
             <Image
               src="/images/avatars-icons/gh-prof-photo.jpg"
               alt="Matthew Johnston - Web Developer"

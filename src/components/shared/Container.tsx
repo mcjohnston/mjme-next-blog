@@ -1,16 +1,12 @@
-import { ReactNode } from "react";
+import { twJoin } from "tailwind-merge";
+import { ChildrenWithTailwind } from "@/types/util";
 
-type ContainerProps = {
-  children: ReactNode;
-  classOverrides?: string;
-};
-const Container: React.FC<ContainerProps> = ({ children, classOverrides }) => {
+const Container: React.FC<ChildrenWithTailwind> = ({
+  children,
+  classOverrides,
+}) => {
   return (
-    <div
-      className={`container mx-auto w-full gap-x-2 gap-y-2 ${
-        classOverrides || ""
-      }`}
-    >
+    <div className={twJoin("container mx-auto w-full", classOverrides)}>
       {children}
     </div>
   );
