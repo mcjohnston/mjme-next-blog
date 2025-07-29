@@ -5,3 +5,7 @@ export const formatBlogDate = (dateString: string): string => {
 
   return format(date, "LLLL	d, yyyy");
 };
+
+export const pluckYear = (date: Date): string => {
+  return format(date.toString(), "yyyy");
+};

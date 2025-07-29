@@ -26,7 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${raleway.variable} ${manrope.variable} antialiased`}>
+      <body
+        className={`${raleway.variable} ${manrope.variable} antialiased w-screen flex flex-col grow min-h-screen`}
+      >
         <Header />
         {children}
         <Footer />

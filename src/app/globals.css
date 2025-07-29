@@ -6,8 +6,26 @@
 }
 
 @theme inline {
+  --breakpoint-xs: 30rem;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  /* custom palette */
+  --color-darknavy: #1b3c53;
+  --color-lightnavy: #456882;
+  --color-basetan: #d2c1b6;
+  --color-offwhite: #f9f3ef;
+
+  --color-blue: #3674b5;
+  --color-brightblue: #578fca;
+  --color-sand: #f5f0cd;
+  --color-orange: #fada7a;
+
+  --color-eggshell: #f3f3e0;
+  --color-midblue: #133e87;
+  --color-midbluelight: #608bc1;
+  --color-lightblue: #cbdceb;
+
   --font-sans: var(--font-raleway);
   --font-mono: var(--font-manrope);
 }
