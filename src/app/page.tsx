@@ -6,8 +6,8 @@ export default function Home() {
   return (
     <main className="">
       <Container>
-        <div className="grid grid-cols-12 md:my-24">
-          <div className="col-span-12 md:col-span-6 lg:col-span-8 bg-lightblue shadow-2xs md:shadow-none mb-10 md:mb-0 rounded-2xl md:rounded-none md:bg-transparent order-1 md:order-0">
+        <div className="flex md:my-24">
+          <div className="flex-wrap flex-col md:basis-1/2 lg:basis-3/4 bg-lightblue shadow-2xs md:shadow-none mb-10 md:mb-0 rounded-2xl md:rounded-none md:bg-transparent order-1 md:order-0">
             <div className="px-8 md:px-0 my-8">
               <h1 className="text-lightnavy font-sans text-4xl md:text-6xl font-bold">
                 Hi there, name&apos;s Matt
@@ -32,13 +32,13 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="col-span-12 md:col-span-6 lg:col-span-4">
+          <div className="flex-col md:basis-1/2 lg:basis-1/3">
             <Image
               src="/images/avatars-icons/gh-prof-photo.jpg"
               alt="Matthew Johnston - Web Developer"
               width={460}
               height={460}
-              className="rounded-full max-w-74 mx-auto shadow-md mt-12 md:mt-0"
+              className="rounded-full max-w-74 mx-auto shadow-md mt-12 md:mt-0 mb-8 md:mb-0"
             />
           </div>
         </div>

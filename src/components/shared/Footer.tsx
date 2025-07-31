@@ -8,7 +8,7 @@ export default function Footer() {
     <footer className="py-10 sticky top-[100vh] w-full bg-darknavy text-offwhite border-t-neutral-300 border-t-2 font-sans">
       <Container>
         <GridRow>
-          <div className="col-span-12 text-center md:text-left md:col-span-6">
+          <div className="w-full text-center md:text-left md:w-1/2">
             {socialLinks
               .filter((link) => link.activeAreas?.includes("footer"))
               .map((link) => (
@@ -22,7 +22,7 @@ export default function Footer() {
                 </a>
               ))}
           </div>
-          <div className="col-span-12 md:col-span-6 text-center md:text-right">
+          <div className="w-full md:w-1/2 text-center md:text-right">
             <p>&copy; {pluckYear(new Date())} Matthew Johnston</p>
             <p>Words and opinions expressed here are my own.</p>
           </div>

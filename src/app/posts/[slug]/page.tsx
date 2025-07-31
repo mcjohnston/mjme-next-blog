@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/utils/api/posts-api";
 import PostHeader from "@/components/posts/post-header";
 import { formatBlogDate } from "@/utils/format-dates";
+import BasePageWrap from "@/components/shared/BasePageWrap";
 
 type PostBySlugParams = {
   params: Promise<{
@@ -20,12 +21,16 @@ export default async function PostSlugPage(props: PostBySlugParams) {
     return notFound();
   }
 
+  // TODO: Add some logic here to toggle a sidebar
+
   return (
     <main>
-      <article className="mb-32">
-        <PostHeader {...{ title, coverImage, date }} />
-        {postContent.content}
-      </article>
+      <BasePageWrap>
+        <article className="mb-32">
+          <PostHeader {...{ title, coverImage, date }} />
+          {postContent.content}
+        </article>
+      </BasePageWrap>
     </main>
   );
 }

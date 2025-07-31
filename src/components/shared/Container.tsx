@@ -6,7 +6,12 @@ const Container: React.FC<ChildrenWithTailwind> = ({
   classOverrides,
 }) => {
   return (
-    <div className={twJoin("container mx-auto w-full", classOverrides)}>
+    <div
+      className={twJoin(
+        "container flex-row mx-auto w-full px-2 sm:px-6 lg:px-8",
+        classOverrides
+      )}
+    >
       {children}
     </div>
   );

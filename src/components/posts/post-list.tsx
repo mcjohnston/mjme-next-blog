@@ -11,7 +11,7 @@ const PostList: React.FC<PostListProps> = ({ posts }) => {
       <h2 className="mb-8 text-5xl md:text-7xl font-bold tracking-tighter leading-tight">
         More Stories
       </h2>
-      <div className="grid grid-cols-1">
+      <div className="">
         {posts.map((post) => {
           const { title, coverImage, date, excerpt } = post.frontmatter;
           return (

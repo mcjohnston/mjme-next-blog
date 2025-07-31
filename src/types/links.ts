@@ -12,6 +12,6 @@ export type SocialLink = {
   activeAreas?: string[];
 };
 
-export type SocialLinkIconProps = {
+export type LinkIconProps = {
   classOverrides?: string;
 };

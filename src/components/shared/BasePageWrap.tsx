@@ -6,7 +6,7 @@ const BasePageWrap: React.FC<ReactChildren> = ({ children }) => {
   return (
     <Container>
       <GridRow classOverrides="mt-20 mb-30">
-        <div className="col-span-12">{children}</div>
+        <div className="w-full">{children}</div>
       </GridRow>
     </Container>
   );

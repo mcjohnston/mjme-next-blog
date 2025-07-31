@@ -2,13 +2,14 @@ import { type Metadata } from "next";
 import BasePageWrap from "@/components/shared/BasePageWrap";
 
 export const metadata: Metadata = {
-  title: "Resume | Matthew Johnston",
-  description: "The current resume of Matthew Johnston",
+  title: "Projects | Matthew Johnston",
+  description: "Recent projects of Matthew Johnston",
 };
-export default function ResumePage() {
+
+export default function ProjectsPage() {
   return (
     <BasePageWrap>
-      <div>This is the ResumePage</div>
+      <div>This is the Projects Page</div>
     </BasePageWrap>
   );
 }

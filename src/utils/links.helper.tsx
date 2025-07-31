@@ -45,11 +45,11 @@ export const mainNavLinks: MainNavLink[] = [
   },
   {
     title: "Resume",
-    href: "/portfolio/resume",
+    href: "/resume",
   },
   {
     title: "Projects",
-    href: "/portfolio/projects",
+    href: "/projects",
   },
   {
     title: "Blog",

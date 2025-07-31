@@ -1,6 +1,6 @@
-import { type SocialLinkIconProps } from "@/types/links";
+import { type LinkIconProps } from "@/types/links";
 
-const GitHubIcon: React.FC<SocialLinkIconProps> = ({ classOverrides }) => {
+const GitHubIcon: React.FC<LinkIconProps> = ({ classOverrides }) => {
   return (
     <svg
       className={classOverrides}

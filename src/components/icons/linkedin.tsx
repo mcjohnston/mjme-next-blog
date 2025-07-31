@@ -1,6 +1,6 @@
-import { type SocialLinkIconProps } from "@/types/links";
+import { type LinkIconProps } from "@/types/links";
 
-const LinkedInIcon: React.FC<SocialLinkIconProps> = ({ classOverrides }) => {
+const LinkedInIcon: React.FC<LinkIconProps> = ({ classOverrides }) => {
   return (
     <svg
       className={classOverrides}

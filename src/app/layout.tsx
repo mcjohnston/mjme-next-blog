@@ -6,12 +6,10 @@ import Footer from "@/components/shared/Footer";
 
 const raleway = Raleway({
   variable: "--font-raleway",
-  // subsets: ["latin"],
 });
 
 const manrope = Manrope({
   variable: "--font-manrope",
-  // subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -27,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${raleway.variable} ${manrope.variable} antialiased w-screen flex flex-col min-h-screen`}
+        className={`${raleway.variable} ${manrope.variable} antialiased min-h-screen`}
       >
         <Header />
         {children}
