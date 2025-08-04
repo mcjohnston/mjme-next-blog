@@ -9,3 +9,7 @@ export const formatBlogDate = (dateString: string): string => {
 export const pluckYear = (date: Date): string => {
   return format(date.toString(), "yyyy");
 };
+
+export const baseDateFormat = (date: Date): string => {
+  return format(date.toString(), "MMMM yyyy");
+};
