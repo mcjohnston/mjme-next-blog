@@ -1,16 +1,14 @@
 import Link from "next/link";
 import { Fragment } from "react";
 import { mainNavLinks } from "@/utils/links.helper";
-// import Container from "./Container";
-// import GridRow from "./GridRow";
 import MiniLogo from "./MiniLogo";
 import BurgerMenuIcon from "../icons/burger-menu";
 
 export default function Header() {
   return (
     <header>
-      <nav className="bg-gray-800">
-        <div className="mx-auto container px-2 sm:px-6 lg:px-8">
+      <nav className="bg-lightblue border-neutral-200 border-b-2">
+        <div className="mx-auto md:container px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
               <button
@@ -22,17 +20,19 @@ export default function Header() {
                 <BurgerMenuIcon />
               </button>
             </div>
-            <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+            <div className="flex flex-row w-full justify-center items-center">
               <div className="flex shrink-0 items-center">
-                <MiniLogo />
+                <Link href="/">
+                  <MiniLogo />
+                </Link>
               </div>
-              <div className="hidden sm:ml-6 sm:block">
-                <div className="flex space-x-4 ml-auto">
+              <div className="hidden sm:ml-auto sm:flex">
+                <div className="flex space-x-4">
                   {mainNavLinks.map((link) => (
                     <Fragment key={`main-nav-link-${link.title}`}>
                       <Link
                         href={link.href}
-                        className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                        className="rounded-sm px-2 py-2 text-md font-medium font-sans text-lightnavy tracking-wider hover:bg-lightnavy hover:text-white transition-all"
                       >
                         {link.title}
                       </Link>

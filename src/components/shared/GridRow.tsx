@@ -7,10 +7,7 @@ const GridRow: React.FC<ChildrenWithTailwind> = ({
 }) => {
   return (
     <div
-      className={twJoin(
-        "flex flex-row w-full items-center justify-center",
-        classOverrides
-      )}
+      className={twJoin("w-full items-center justify-center", classOverrides)}
     >
       {children}
     </div>

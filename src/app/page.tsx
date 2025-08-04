@@ -1,13 +1,15 @@
 import Image from "next/image";
+import Link from "next/link";
 import Container from "@/components/shared/Container";
 import DividerText from "@/components/shared/DividerText";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
     <main className="">
       <Container>
-        <div className="flex md:my-24">
-          <div className="flex-wrap flex-col md:basis-1/2 lg:basis-3/4 bg-lightblue shadow-2xs md:shadow-none mb-10 md:mb-0 rounded-2xl md:rounded-none md:bg-transparent order-1 md:order-0">
+        <div className="grid grid-cols-12 md:my-24">
+          <div className="col-span-12 md:col-span-6 lg:col-span-8 mb-10 md:mb-0 order-2 md:order-1">
             <div className="px-8 md:px-0 my-8">
               <h1 className="text-lightnavy font-sans text-4xl md:text-6xl font-bold">
                 Hi there, name&apos;s Matt
@@ -22,17 +24,27 @@ export default function Home() {
                 <span className="text-2xl">👷</span>
               </p>
               <div className="mt-6">
-                <button className="inline-flex" type="button">
-                  View My Resume
-                </button>
-                <DividerText>or</DividerText>
-                <button className="inline-flex" type="button">
-                  Previous Projects
-                </button>
+                <Button
+                  className="flex sm:inline-flex md:px-8"
+                  variant="default"
+                  asChild
+                >
+                  <Link href="/resume">View My Resume</Link>
+                </Button>
+                <DividerText classOverrides="flex mx-auto my-8 md:my-0 sm:mx-4 md:mx-8 sm:inline-flex sm:max-w-24 md:max-w-30">
+                  or
+                </DividerText>
+                <Button
+                  className="flex sm:inline-flex md:px-8"
+                  variant="secondary"
+                  asChild
+                >
+                  <Link href="/projects">Previous Projects</Link>
+                </Button>
               </div>
             </div>
           </div>
-          <div className="flex-col md:basis-1/2 lg:basis-1/3">
+          <div className="col-span-12 md:col-span-6 lg:col-span-4 order-0 md:order-2">
             <Image
               src="/images/avatars-icons/gh-prof-photo.jpg"
               alt="Matthew Johnston - Web Developer"
