@@ -25,23 +25,23 @@ const ResumeItem: React.FC<ResumeItemProps> = ({
   children,
 }) => {
   return (
-    <div className="grid grid-cols-12 font-sans border-1 border-neutral-300 mb-12">
+    <div className="grid grid-cols-12 font-sans border-1 border-neutral-300 mb-12 shadow-md rounded-md">
       {logo && (
         <div
           className={twJoin(
-            logo ? "col-span-12 md:col-span-4" : "",
+            logo ? "col-span-12 lg:col-span-4" : "",
             "justify-center items-center"
           )}
         >
-          <div className="flex items-center justify-center h-full p-10 border-b-1 md:border-b-0 md:border-r-1 border-r-neutral-300">
+          <div className="flex items-center justify-center h-full p-10 border-b-1 lg:border-b-0 md:border-r-1 border-r-neutral-300">
             {logo}
           </div>
         </div>
       )}
       <div
-        className={twJoin(logo ? "col-span-12 md:col-span-8" : "col-span-12")}
+        className={twJoin(logo ? "col-span-12 lg:col-span-8" : "col-span-12")}
       >
-        <div className="p-4 md:p-20 pt-10 md:pt-8">
+        <div className={twJoin("p-4 md:p-20", logo ? "pt-10 md:pt-8" : "")}>
           <div className="block">
             <h2 className="font-bold text-lightnavy text-2xl inline-flex mb-1 md:mb-4">
               {companyName}

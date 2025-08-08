@@ -1,35 +1,58 @@
+import FileDL from "@/components/icons/filedl";
 import GitHubIcon from "@/components/icons/github";
 import LinkedInIcon from "@/components/icons/linkedin";
 import { type MainNavLink, type SocialLink } from "@/types/links";
+import { twJoin } from "tailwind-merge";
 
-// TODO: Possibly export these out to constants or another util
+const sharedLinks = {
+  linkedIn: "https://www.linkedin.com/in/matthew-johnston-8776423a/",
+  github: "https://github.com/mcjohnston",
+};
+
+const resumeIconLinkClasses =
+  "w-8 h-8 ml-2 transition-colors duration-100 ease-in-out";
+const footerIconClasses =
+  "w-8 h-8 ml-2 hover:fill-sand transition-colors duration-100 ease-in-out";
+const resumeFillIcons = twJoin(
+  resumeIconLinkClasses,
+  "fill-lightnavy hover:fill-basetan"
+);
+const resumeStrokeIcons = twJoin(
+  resumeIconLinkClasses,
+  "stroke-lightnavy hover:stroke-basetan"
+);
+
 export const socialLinks: SocialLink[] = [
   {
     title: "LinkedIn",
-    icon: <LinkedInIcon />,
-    url: "https://www.linkedin.com/in/matthew-johnston-8776423a/",
-    activeAreas: ["header"],
+    icon: <LinkedInIcon classOverrides={resumeFillIcons} />,
+    url: sharedLinks.linkedIn,
+    activeAreas: ["resume"],
   },
   {
     title: "Github",
-    icon: <GitHubIcon />,
-    url: "https://github.com/mcjohnston",
-    activeAreas: ["header"],
+    icon: <GitHubIcon classOverrides={resumeFillIcons} />,
+    url: sharedLinks.github,
+    activeAreas: ["resume"],
+  },
+  {
+    title: "Resume",
+    icon: <FileDL classOverrides={resumeStrokeIcons} />,
+    url: "/files/resume-current.pdf",
+    activeAreas: ["resume"],
   },
   {
     title: "LinkedIn",
     icon: (
-      <LinkedInIcon classOverrides="w-8 h-8 first:ml-0 ml-2 hover:fill-sand transition-colors duration-100 ease-in-out" />
+      <LinkedInIcon classOverrides={twJoin(footerIconClasses, "first:ml-0")} />
     ),
-    url: "https://www.linkedin.com/in/matthew-johnston-8776423a/",
+    url: sharedLinks.linkedIn,
     activeAreas: ["footer"],
   },
   {
     title: "Github",
-    icon: (
-      <GitHubIcon classOverrides="w-8 h-8 ml-2 hover:fill-sand transition-colors duration-100 ease-in-out" />
-    ),
-    url: "https://github.com/mcjohnston",
+    icon: <GitHubIcon classOverrides={footerIconClasses} />,
+    url: sharedLinks.github,
     activeAreas: ["footer"],
   },
 ];

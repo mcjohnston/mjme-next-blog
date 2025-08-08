@@ -1,7 +1,9 @@
 import { type Metadata } from "next";
-import BasePageWrap from "@/components/shared/BasePageWrap";
 import Image from "next/image";
+import BasePageWrap from "@/components/shared/BasePageWrap";
 import ResumeItem from "@/components/resume/ResumeItem";
+import Container from "@/components/shared/Container";
+import { socialLinks } from "@/utils/links.helper";
 
 export const metadata: Metadata = {
   title: "Resume | Matthew Johnston",
@@ -10,14 +12,43 @@ export const metadata: Metadata = {
 export default function ResumePage() {
   return (
     <>
-      <div className="bg-sand">
-        <h1>Matthew Johnston</h1>
-        <p>
-          Front-End Developer with over 10 years of experience across various
-          industries and verticals, from Fortune 100 companies to startups.
-          Proficient in React and general lover of all things JavaScript /
-          TypeScript and adjacent technologies.
-        </p>
+      <div className="bg-eggshell py-10">
+        <Container>
+          <div className="grid grid-cols-12">
+            <div className="px-2 md:px-0 mb-2 col-span-12 md:col-span-6">
+              <div className="mb-2">
+                <h1 className="font-sans text-4xl font-bold text-lightnavy inline-flex">
+                  Matthew Johnston
+                </h1>
+                <p className="inline-flex font-sans font-normal ml-2">
+                  - U.S. Citizen from Indianapolis, IN
+                </p>
+              </div>
+              <p className="font-serif text-md font-light mb-3">
+                Front-End Developer with over 10 years of experience across
+                various industries and verticals, from Fortune 100 companies to
+                startups. Proficient in React and general lover of all things
+                JavaScript / TypeScript and adjacent technologies.
+              </p>
+            </div>
+            <div className="col-span-12 md:col-span-6 flex justify-center">
+              <div className="md:ml-auto mr-0">
+                {socialLinks
+                  .filter((link) => link.activeAreas?.includes("resume"))
+                  .map((link) => (
+                    <a
+                      key={`resume-${link.title}`}
+                      href={link.url}
+                      target="_blank"
+                      className="inline-flex fill-white"
+                    >
+                      {link.icon}
+                    </a>
+                  ))}
+              </div>
+            </div>
+          </div>
+        </Container>
       </div>
       <BasePageWrap>
         <ResumeItem
