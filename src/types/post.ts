@@ -4,7 +4,7 @@ export type Post = {
   slug: string; // url slug
   title: string; // post title
   date: string; // date format - YYYY-MM-DDT00:00:00
-  coverImage: string; // pub image set, TODO: org into folders
+  coverImage: string; // pub image set
   excerpt: string;
   ogImage: {
     url: string;

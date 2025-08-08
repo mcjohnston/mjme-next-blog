@@ -5,6 +5,9 @@ import createMDX from "@next/mdx";
 const nextConfig: NextConfig = {
   // configure page extensions to pick up markdown files
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  images: {
+    remotePatterns: [new URL("https://image.api.playstation.com/**")],
+  },
 };
 
 const withMDX = createMDX({

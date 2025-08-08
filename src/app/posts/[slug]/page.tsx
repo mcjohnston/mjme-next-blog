@@ -16,12 +16,10 @@ export default async function PostSlugPage(props: PostBySlugParams) {
   const postContent = await getPostBySlug(`${awaitedParams.slug}.mdx`);
   const { title, coverImage, date } = postContent.frontmatter;
 
-  // early return to 404 if we don't get a post, TODO: Custom 404 for blog
+  // early return to 404 if we don't get a post
   if (!postContent) {
     return notFound();
   }
-
-  // TODO: Add some logic here to toggle a sidebar
 
   return (
     <main>
